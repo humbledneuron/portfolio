@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bhanu's Portfolio Under Construction</title>
+  <title>Portfolio Under Construction</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
+    
     body {
       background: linear-gradient(135deg, #1a1a2e, #16213e);
       animation: gradientAnimation 10s ease infinite;
@@ -24,6 +25,7 @@
       }
     }
 
+    
     .typing-text {
       overflow: hidden;
       white-space: nowrap;
@@ -51,11 +53,14 @@
       }
     }
 
+    
     .cube-container {
       position: absolute;
+      top: 50%; 
       left: 50%;
       transform: translate(-50%, -50%);
       cursor: grab;
+      transition: none; 
     }
 
     .cube {
@@ -106,84 +111,56 @@
       }
     }
 
+    
     .particle {
       position: absolute;
       width: 10px;
       height: 10px;
       background: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      animation: float 10s infinite ease-in-out;
+      transition: transform 0.1s ease;
     }
 
-    .particle:nth-child(1) {
-      top: 10%;
-      left: 20%;
-      animation-delay: 0s;
+    
+    .sphere {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+      border-radius: 50%;
+      animation: sphereFloat 15s infinite ease-in-out;
     }
 
-    .particle:nth-child(2) {
-      top: 30%;
-      left: 50%;
-      animation-delay: 2s;
-    }
-
-    .particle:nth-child(3) {
-      top: 60%;
-      left: 80%;
-      animation-delay: 4s;
-    }
-
-    @keyframes float {
+    @keyframes sphereFloat {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translate(0, 0) scale(1);
       }
       50% {
-        transform: translateY(-20px) scale(1.2);
+        transform: translate(100px, -50px) scale(1.2);
       }
       100% {
-        transform: translateY(0) scale(1);
+        transform: translate(0, 0) scale(1);
       }
     }
 
-    .hover-effect {
-      transition: all 0.3s ease;
+    
+    .explode-piece {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: explode 1s ease forwards;
     }
 
-    .hover-effect:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-    }
-
-    .grid-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1px,
-        transparent 20px
-      ),
-      repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1px,
-        transparent 20px
-      );
-      animation: gridAnimation 5s infinite linear;
-    }
-
-    @keyframes gridAnimation {
+    @keyframes explode {
       0% {
-        background-position: 0 0;
+        transform: scale(1);
+        opacity: 1;
       }
       100% {
-        background-position: 20px 20px;
+        transform: scale(0);
+        opacity: 0;
       }
     }
   </style>
@@ -192,35 +169,24 @@
   <div class="grid-bg"></div>
 
   <div class="text-center space-y-6 animate__animated animate__fadeIn">
-    <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate__animated animate__pulse animate__infinite">
+    <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate__animated animate__pulse animate__infinite hover:text-white transition duration-300">
       Portfolio Under Construction
     </h1>
 
-    <p class="text-lg text-gray-300 typing-text">
+    <p class="text-lg text-gray-300 typing-text hover:text-white transition duration-300">
       Building something amazing...
     </p>
-
-    <div id="cube-container" class="cube-container">
-      <div class="cube">
-        <div class="front"></div>
-        <div class="back"></div>
-        <div class="right"></div>
-        <div class="left"></div>
-        <div class="top"></div>
-        <div class="bottom"></div>
-      </div>
-    </div>
 
     <div class="w-full max-w-md mx-auto mt-10">
       <div class="relative pt-1">
         <div class="flex mb-2 items-center justify-between">
           <div>
-            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 hover:bg-blue-500 transition duration-300">
               Progress
             </span>
           </div>
           <div class="text-right">
-            <span class="text-xs font-semibold inline-block text-blue-600">
+            <span class="text-xs font-semibold inline-block text-blue-600 hover:text-blue-400 transition duration-300">
               75%
             </span>
           </div>
@@ -231,66 +197,168 @@
       </div>
     </div>
 
-    <button class="hover-effect mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold shadow-lg">
+    <button class="hover-effect mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold shadow-lg hover:scale-110 transition duration-300">
       Notify Me When Ready!
     </button>
-<!-- 
-    <footer class="mt-10 text-gray-500">
-      <p>&copy; 2023  Name. All rights reserved.</p>
-    </footer> -->
+
+    <footer class="mt-10 text-gray-500 hover:text-gray-400 transition duration-300">
+      <p>&copy; 2023 Your Name. All rights reserved.</p>
+    </footer>
   </div>
 
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-
   <script>
-    const cubeContainer = document.getElementById('cube-container');
-    let isDragging = false;
-    let offsetX = 0;
-
-    cubeContainer.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      offsetX = e.clientX - cubeContainer.getBoundingClientRect().left;
-      cubeContainer.style.cursor = 'grabbing';
-      cubeContainer.style.transition = 'none'; 
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        const x = e.clientX - offsetX;
-
-        const maxX = window.innerWidth - cubeContainer.offsetWidth;
-
-        cubeContainer.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      cubeContainer.style.cursor = 'grab';
-      cubeContainer.style.transition = 'transform 0.3s ease'; 
-
-      const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
-      cubeContainer.style.top = `${centerY}px`;
-    });
-
-    function roamCube() {
-      if (!isDragging) {
-        const x = Math.random() * (window.innerWidth - cubeContainer.offsetWidth);
-
-        const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
-
-        cubeContainer.style.transition = 'transform 2s ease';
-        cubeContainer.style.transform = `translate(${x}px, ${centerY}px)`;
-
-        setTimeout(roamCube, 10000); 
-      } else {
-        setTimeout(roamCube, 1000); 
-      }
+    const particleCount = 50; 
+    const particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * window.innerWidth}px`;
+      particle.style.top = `${Math.random() * window.innerHeight}px`;
+      document.body.appendChild(particle);
+      particles.push(particle);
     }
 
-    roamCube();
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function updateParticles() {
+      particles.forEach((particle, index) => {
+        const angle = (index / particleCount) * Math.PI * 2; 
+        const distance = 100 + Math.random() * 50; 
+
+        const x = mouseX + Math.cos(angle) * distance;
+        const y = mouseY + Math.sin(angle) * distance;
+
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+      });
+
+      requestAnimationFrame(updateParticles);
+    }
+
+    updateParticles();
+
+    const cubeCount = 5; 
+    const cubeContainers = [];
+    for (let i = 0; i < cubeCount; i++) {
+      const cubeContainer = document.createElement('div');
+      cubeContainer.classList.add('cube-container');
+      cubeContainer.style.left = `${Math.random() * window.innerWidth}px`;
+      cubeContainer.style.top = `${Math.random() * window.innerHeight}px`;
+
+      const cube = document.createElement('div');
+      cube.classList.add('cube');
+
+      ['front', 'back', 'right', 'left', 'top', 'bottom'].forEach((face) => {
+        const div = document.createElement('div');
+        div.classList.add(face);
+        cube.appendChild(div);
+      });
+
+      cubeContainer.appendChild(cube);
+      document.body.appendChild(cubeContainer);
+
+      cubeContainers.push(cubeContainer);
+    }
+
+    cubeContainers.forEach((cubeContainer) => {
+      let isDragging = false;
+      let offsetX = 0;
+
+      cubeContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - cubeContainer.getBoundingClientRect().left;
+        cubeContainer.style.cursor = 'grabbing';
+        cubeContainer.style.transition = 'none'; 
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          const x = e.clientX - offsetX;
+
+          const maxX = window.innerWidth - cubeContainer.offsetWidth;
+
+          cubeContainer.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        cubeContainer.style.cursor = 'grab';
+        cubeContainer.style.transition = 'transform 0.3s ease'; 
+
+        const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
+        cubeContainer.style.top = `${centerY}px`;
+      });
+    });
+
+    function roamCubes() {
+      cubeContainers.forEach((cubeContainer) => {
+        if (!isDragging) {
+          const x = Math.random() * (window.innerWidth - cubeContainer.offsetWidth);
+
+          const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
+
+          cubeContainer.style.transition = 'transform 2s ease';
+          cubeContainer.style.transform = `translate(${x}px, ${centerY}px)`;
+        }
+      });
+
+      setTimeout(roamCubes, 3000); 
+    }
+
+    roamCubes();
+
+    cubeContainers.forEach((cubeContainer) => {
+      cubeContainer.addEventListener('click', (e) => {
+        const cubeRect = cubeContainer.getBoundingClientRect();
+        const centerX = cubeRect.left + cubeRect.width / 2;
+        const centerY = cubeRect.top + cubeRect.height / 2;
+
+        for (let i = 0; i < 10; i++) {
+          const piece = document.createElement('div');
+          piece.classList.add('explode-piece');
+
+          const angle = Math.random() * Math.PI * 2;
+          const distance = Math.random() * 100 + 50;
+
+          piece.style.left = `${centerX}px`;
+          piece.style.top = `${centerY}px`;
+          piece.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
+
+          document.body.appendChild(piece);
+
+          setTimeout(() => {
+            piece.remove();
+          }, 1000);
+        }
+      });
+    });
+
+    const sphereCount = 5; 
+    for (let i = 0; i < sphereCount; i++) {
+      const sphere = document.createElement('div');
+      sphere.classList.add('sphere');
+      sphere.style.left = `${Math.random() * window.innerWidth}px`;
+      sphere.style.top = `${Math.random() * window.innerHeight}px`;
+      document.body.appendChild(sphere);
+    }
+
+    const spheres = document.querySelectorAll('.sphere');
+    document.addEventListener('mousemove', (e) => {
+      spheres.forEach((sphere, index) => {
+        const delay = index * 0.2; 
+        setTimeout(() => {
+          sphere.style.left = `${e.clientX - 10 + Math.random() * 20}px`;
+          sphere.style.top = `${e.clientY - 10 + Math.random() * 20}px`;
+        }, delay * 1000);
+      });
+    });
   </script>
 </body>
 </html>
