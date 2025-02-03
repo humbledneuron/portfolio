@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhanu's Portfolio Under Construction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      animation: gradientAnimation 10s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .typing-text {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #fff;
+      width: 0;
+      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink-caret {
+      from,
+      to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: #fff;
+      }
+    }
+
+    .cube-container {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+    }
+
+    .cube {
+      position: relative;
+      width: 100px;
+      transform-style: preserve-3d;
+      animation: rotateCube 5s infinite linear;
+    }
+
+    .cube div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .front {
+      transform: translateZ(50px);
+    }
+
+    .back {
+      transform: rotateY(180deg) translateZ(50px);
+    }
+
+    .right {
+      transform: rotateY(90deg) translateZ(50px);
+    }
+
+    .left {
+      transform: rotateY(-90deg) translateZ(50px);
+    }
+
+    .top {
+      transform: rotateX(90deg) translateZ(50px);
+    }
+
+    .bottom {
+      transform: rotateX(-90deg) translateZ(50px);
+    }
+
+    @keyframes rotateCube {
+      from {
+        transform: rotateY(0deg) rotateX(0deg);
+      }
+      to {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      top: 30%;
+      left: 50%;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(3) {
+      top: 60%;
+      left: 80%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.2);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .hover-effect {
+      transition: all 0.3s ease;
+    }
+
+    .hover-effect:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 20px
+      );
+      animation: gridAnimation 5s infinite linear;
+    }
+
+    @keyframes gridAnimation {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center overflow-hidden relative">
+  <div class="grid-bg"></div>
+
+  <div class="text-center space-y-6 animate__animated animate__fadeIn">
+    <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate__animated animate__pulse animate__infinite">
+      Portfolio Under Construction
+    </h1>
+
+    <p class="text-lg text-gray-300 typing-text">
+      Building something amazing...
+    </p>
+
+    <div id="cube-container" class="cube-container">
+      <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-md mx-auto mt-10">
+      <div class="relative pt-1">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+              Progress
+            </span>
+          </div>
+          <div class="text-right">
+            <span class="text-xs font-semibold inline-block text-blue-600">
+              75%
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-4 mb-4 text-xs flex rounded bg-gray-700">
+          <div style="width: 75%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-blue-500 to-purple-500 animate__animated animate__slideInLeft"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="hover-effect mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold shadow-lg">
+      Notify Me When Ready!
+    </button>
+<!-- 
+    <footer class="mt-10 text-gray-500">
+      <p>&copy; 2023  Name. All rights reserved.</p>
+    </footer> -->
+  </div>
+
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+
+  <script>
+    const cubeContainer = document.getElementById('cube-container');
+    let isDragging = false;
+    let offsetX = 0;
+
+    cubeContainer.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - cubeContainer.getBoundingClientRect().left;
+      cubeContainer.style.cursor = 'grabbing';
+      cubeContainer.style.transition = 'none'; 
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const x = e.clientX - offsetX;
+
+        const maxX = window.innerWidth - cubeContainer.offsetWidth;
+
+        cubeContainer.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      cubeContainer.style.cursor = 'grab';
+      cubeContainer.style.transition = 'transform 0.3s ease'; 
+
+      const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
+      cubeContainer.style.top = `${centerY}px`;
+    });
+
+    function roamCube() {
+      if (!isDragging) {
+        const x = Math.random() * (window.innerWidth - cubeContainer.offsetWidth);
+
+        const centerY = window.innerHeight / 2 - cubeContainer.offsetHeight / 2;
+
+        cubeContainer.style.transition = 'transform 2s ease';
+        cubeContainer.style.transform = `translate(${x}px, ${centerY}px)`;
+
+        setTimeout(roamCube, 10000); 
+      } else {
+        setTimeout(roamCube, 1000); 
+      }
+    }
+
+    roamCube();
+  </script>
+</body>
+</html>
